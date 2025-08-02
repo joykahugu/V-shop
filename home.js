@@ -83,6 +83,14 @@ $("#dropdownBtn").on("click", function () {
 
 
 let items = products;
+function createElement(tag, className, text) {
+    const el = document.createElement(tag);
+    el.className = className;
+    if (text) {
+        el.textContent = text;
+    }
+    return el;
+};
 
 function renderCart() {
   cartItems.innerHTML = '';
@@ -95,15 +103,15 @@ function renderCart() {
     clearCartBtn.disabled = false;
 
     cart.forEach(item => {
-      const cartItem = document.createElement('div', 'cart-item flex justify-between items-center py-3');
+      const cartItem = createElement('div', 'cart-item flex justify-between items-center py-3');
       cartItem.classList.add('cart-item', 'flex', 'justify-between', 'items-center', 'py-3');
-      const cartDiv1 = document.createElement('div');
+      const cartDiv1 = createElement('div');
       const nameP = document.createElement('p');
       nameP.classList.add('font-semibold');
-      nameP.textContent = `${item.title}`;
-      const quantityP = document.createElement('p');
+      //nameP.textContent = `${item.title}`;
+      const quantityP = createElement('p',`${item.title}` );
       quantityP.classList.add('text-sm');
-      quantityP.textContent = `${(item.price.toFixed(2))} x ${item.quantity}`
+      // quantityP.textContent = 
       cartDiv1.append(nameP, quantityP);
 
       const cartDiv2 = document.createElement('div', 'flex items-center gap-2');
